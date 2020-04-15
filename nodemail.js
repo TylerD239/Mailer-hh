@@ -13,7 +13,7 @@ const transporter = nodemailer.createTransport(
         }
     },
     {
-        from: '<beliv58@mail.ru>'
+        from: 'Ирина Владимировна <beliv58@mail.ru>'
         // from: '<smolin.mailer@mail.ru>'
     }
 )
