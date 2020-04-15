@@ -1,5 +1,4 @@
 import React, {useState} from "react"
-import {} from 'email-validator'
 import {Loader} from "../components/Loader";
 
 export const MailPage = () => {
@@ -31,6 +30,7 @@ export const MailPage = () => {
 
     const addMark = (e,student) => {
         if (!student) return
+        if (!e.target.value) return setMarks(Object.assign(...Object.keys(marks).filter(key => key === student).map(key => ({[key]: marks[key]}))))
         setMarks({...marks, [student]: e.target.value})
         // console.log(marks)
     }
@@ -122,6 +122,7 @@ export const MailPage = () => {
                                             <td>
                                                 <input
                                                     className="form-control mark"
+                                                    defaultValue = {marks[student[1]]}
                                                     type="text"
                                                     maxLength="1"
                                                     onChange={(e) => {
@@ -148,6 +149,7 @@ export const MailPage = () => {
                         <div className="form-group">
                             <label htmlFor="subject">Тема письма</label>
                             <input type="text"
+                                   value={subject}
                                    className="form-control"
                                    id="subject"
                                    onChange={(e)=>{setSubject(e.target.value)}}
@@ -160,6 +162,7 @@ export const MailPage = () => {
                         <div className="form-group">
                             <label htmlFor="content">Текст письма</label>
                             <textarea
+                                value={text}
                                 className="form-control"
                                 id="content"
                                 rows="5"

@@ -122,7 +122,7 @@ export const EditPage = () => {
                                         <input
                                             className="form-control"
                                             type="text"
-                                            value={student[0] || 'Пусто'}
+                                            defaultValue={student[0] || 'Пусто'}
                                             onChange={(e) => {
                                                 changeName(e, i)
                                             }}
@@ -135,7 +135,7 @@ export const EditPage = () => {
                                             onChange={(e) => {
                                                 changeMail(e, i)
                                             }}
-                                            value={student[1] || 'Пусто'}
+                                            defaultValue={student[1] || 'Пусто'}
                                         />
                                     </td>
                                     <td>
