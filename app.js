@@ -34,8 +34,8 @@ app.post('/api/send', (req,res) => {
                 subject: subject,
                 html: text.replace(/mark/gi, marks[email])
             }
-            console.log(message)
-            // mailer(message)
+            // console.log(message)
+            mailer(message)
         })
         res.status(200).json({message: 'Сообщения отправлены'})
     } catch (e) {

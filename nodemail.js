@@ -8,19 +8,20 @@ const transporter = nodemailer.createTransport(
         secure: true,
 
         auth: {
-            user: 'smolin.mailer@mail.ru',
-            pass: 'Avk239239'
+            user: 'beliv58@mail.ru',
+            pass: '730318800t'
         }
     },
     {
-        from: '<smolin.mailer@mail.ru>'
+        from: '<beliv58@mail.ru>'
+        // from: '<smolin.mailer@mail.ru>'
     }
 )
 
 const mailer = message => {
     transporter.sendMail(message, (err, info) => {
         if(err) return console.log(err)
-        console.log('Email sent: ', info)
+        // console.log('Email sent: ', info)
     })
 }
 
