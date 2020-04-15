@@ -11,22 +11,7 @@ app.use(express.json({extended:true}))
 
 const PORT = config.get('port') || 5000
 
-
 const ips = []
-
-
-if (process.env.NODE_ENV === 'production') {
-
-    app.use('/', express.static(path.join(__dirname,'client', 'build')))
-
-    // app.get('*', (req, res) => {
-    //     res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
-    // })
-}
-
-
-
-
 
 app.get('/api/auth', (req,res) => {
 
@@ -82,6 +67,18 @@ app.get('/api/getList/:group', (req, res)=> {
     res.send(list)
 })
 
+
+
+if (process.env.NODE_ENV === 'production') {
+
+    app.use('/', express.static(path.join(__dirname,'client', 'build')))
+
+    app.get('*', (req, res) => {
+        res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
+    })
+}
+
+
 const reWrite = (name,data) => {
     console.log(data)
     const book = XLSX.utils.book_new()
@@ -89,8 +86,6 @@ const reWrite = (name,data) => {
     XLSX.utils.book_append_sheet(book, sheet, 'sheet1')
     XLSX.writeFile(book, `./classes/${name}.xlsx`)
 }
-
-
 
 
 app.listen(PORT, ()=>{console.log(`Started on ${PORT}`)})
