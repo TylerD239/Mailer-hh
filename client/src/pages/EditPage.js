@@ -17,6 +17,7 @@ export const EditPage = () => {
         '8a':'8а',
         '8b':'8б',
         '8v':'8в',
+        'test':'Тест'
     }
 
 
