@@ -1,0 +1,8 @@
+const {Schema, model} = require('mongoose')
+
+const schema = new Schema ({
+	name : {type: String, required: true},
+	email : {type: String},
+	group : {type: String, required: true}
+})
+module.exports = model('Student', schema)

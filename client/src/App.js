@@ -7,7 +7,7 @@ import {Loader} from "./components/Loader";
 import {useRoutes} from "./routes";
 import NavBar from "./components/NavBar";
 import {BrowserRouter as Router} from 'react-router-dom'
-
+import {StudentsState} from './context/students/StudentsState'
 
 
 function App() {
@@ -24,13 +24,15 @@ const routes = useRoutes();
 
   return (
       <AuthContext.Provider value={{login}}>
-          {authenticated ?
-              <Router>
-                  <NavBar/>
-                  {routes}
-              </Router>
-              : <Auth />
-          }
+          <StudentsState>
+              {authenticated ?
+                  <Router>
+                      <NavBar/>
+                      {routes}
+                  </Router>
+                  : <Auth />
+              }
+          </StudentsState>
       </AuthContext.Provider>
   )
 }
