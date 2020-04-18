@@ -14,6 +14,7 @@ export const StudentsState = ({children}) => {
             dispatch({type: 'DELETE_MARK', email})
         } else dispatch({type: 'ADD_MARK', mark, email})
     }
+
     const groupHandle = async (group) => {
         showLoader()
         const response = await fetch(`/api/getList/${group}`)
@@ -28,9 +29,8 @@ export const StudentsState = ({children}) => {
     }
 
     const deleteStudent = (studentId) => {
-
+        dispatch({type: 'DELETE_MARK', email: state.list[studentId][1]})
         dispatch({type: 'DELETE_STUDENT', studentId})
-        console.log(state.list)
     }
 
     const changeMail = (e, studentId) => {
@@ -44,6 +44,7 @@ export const StudentsState = ({children}) => {
         const name = e.target.value.trim()
         dispatch({type: 'CHANGE_NAME' , name, studentId})
     }
+
     const clearMarks = () => {
         dispatch({type: 'CLEAR_MARKS'})
     }

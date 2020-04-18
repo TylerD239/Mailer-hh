@@ -16,7 +16,7 @@ export const MailPage = () => {
                     <Nav />
                 </div>
 
-                <div className="col-sm-7 ">
+                <div className="col-sm-7">
                     {state.loading ? <Loader/> : <MailTable />}
                 </div>
 

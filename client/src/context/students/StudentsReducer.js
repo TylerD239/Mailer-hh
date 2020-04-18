@@ -3,7 +3,6 @@ const handlers = {
     'ADD_MARK': (state, {mark, email}) => ({...state, marks: {...state.marks, [email]: mark}}),
     'CHANGE_GROUP': (state, {list, group}) => ({...state, list, group, loading: false}),
     'CHANGE_NAME': (state, {name, studentId}) => {
-        console.log(1)
         state.list[studentId][0] = name
         return {...state}
     },
@@ -14,7 +13,6 @@ const handlers = {
     'DELETE_STUDENT': (state, {studentId}) => ({...state, list: state.list.filter((el,i) => (i !== studentId))}),
     'ADD_STUDENT': (state, {name, email}) => ({...state, list: [...state.list, [name, email]]}),
     'DELETE_MARK': (state, {email}) => {
-        // console.log(email)
         delete state.marks[email]
         return {...state}
     },

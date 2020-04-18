@@ -4,6 +4,7 @@ import {StudentsContext} from "../context/students/StudentsContext"
 export const EditTable = () => {
     const {state, addStudent, changeName, changeMail, deleteStudent} = useContext(StudentsContext)
 
+
     return (
         <div>
             <table className="table table-hover">
@@ -23,7 +24,7 @@ export const EditTable = () => {
                             <input
                                 className="form-control"
                                 type="text"
-                                value={student[0] || 'Пусто'}
+                                value={student[0] || ''}
                                 onChange={(e) => {
                                     changeName(e, i)
                                 }}
@@ -36,7 +37,7 @@ export const EditTable = () => {
                                 onChange={(e) => {
                                     changeMail(e, i)
                                 }}
-                                defaultValue={student[1] || 'Пусто'}
+                                value={student[1] || ''}
                             />
                         </td>
                         <td>
@@ -49,7 +50,7 @@ export const EditTable = () => {
                 </tbody>
             </table>
             {state.group &&
-            <button type="button" onClick={()=>{addStudent()}} className="btn btn-outline-primary btn-block">Добавить</button>}
+            <button type="button" onClick={addStudent} className="btn btn-outline-primary btn-block">Добавить</button>}
         </div>
     )
 }

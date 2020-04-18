@@ -4,7 +4,7 @@ import {StudentsContext} from "../context/students/StudentsContext";
 export const Mail = () => {
 
     const [accept, setAccept] = useState(false)
-    const [text, setText] = useState('')
+    const [text, setText] = useState('\n\n\n\nС уважением.\nИрина Владимировна')
     const [subject, setSubject] = useState('')
 
     const {state, clearMarks} = useContext(StudentsContext)
@@ -74,12 +74,11 @@ console.log(Object.keys(state.marks).length)
                             value={text}
                             className="form-control"
                             id="content"
-                            rows="5"
+                            rows="6"
                             name="mail"
                             onChange={(e) => {
                                 setText(e.target.value)
-                            }}
-                            placeholder="Ведите текст письма. Вместо оценки используйте слово mark."/>
+                            }} />
                     </div>
                     {Object.keys(state.marks).length !== 0 &&
                         <button onClick={() => {

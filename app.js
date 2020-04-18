@@ -19,7 +19,7 @@ app.get('/api/auth', (req,res) => {
 })
 app.post('/api/auth', (req,res) => {
 
-    const auth = req.body.password === '1'
+    const auth = req.body.password === '7303188'
     res.send({auth})
     if (auth) ips.push(req.connection.remoteAddress)
 })
@@ -32,10 +32,10 @@ app.post('/api/send', (req,res) => {
             const message = {
                 to: email,
                 subject: subject,
-                html: text.replace(/mark/gi, marks[email])
+                html: text.replace(/mark/gi, marks[email]).split('\n').join('<br>')
             }
-            console.log(message)
-            // mailer(message)
+            // console.log(message)
+            mailer(message)
         })
         res.status(200).json({message: 'Сообщения отправлены'})
     } catch (e) {
@@ -43,9 +43,9 @@ app.post('/api/send', (req,res) => {
     }
 })
 
-app.post('/api/edits/:cls', (req,res) => {
+app.post('/api/edits/:group', (req,res) => {
     try {
-        reWrite(req.params.cls, req.body)
+        reWrite(req.params.group, req.body)
         res.status(200).json({message: 'Изменения сохранены'})
     } catch (e) {
         res.status(500).json({message: e.toString()})

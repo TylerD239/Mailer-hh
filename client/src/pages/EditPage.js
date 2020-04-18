@@ -7,7 +7,10 @@ import {StudentsContext} from "../context/students/StudentsContext";
 
 export const EditPage = () => {
 
-const {state,groupHandle} = useContext(StudentsContext)
+
+    const {state,groupHandle} = useContext(StudentsContext)
+
+
     const postEdits = async () => {
         const response = await fetch(`/api/edits/${state.group}`, {
             method: "POST",
@@ -34,12 +37,12 @@ const {state,groupHandle} = useContext(StudentsContext)
                 </div>
 
                 <div className="col-sm-7 ">
-                    {state.loading ? <Loader/> : <EditTable />}
+                    {state.loading ? <Loader/> : <EditTable/>}
                 </div>
 
 
-                <div className="col-md-3 mt-2">
-                    <button type="button" onClick={postEdits} className="btn btn-outline-success">Сохранить изменения</button>
+                <div className="col-sm-3">
+                    <button type="button" onClick={postEdits} className="btn btn-block btn-lg btn-outline-success">Сохранить изменения</button>
                 </div>
 
             </div>
