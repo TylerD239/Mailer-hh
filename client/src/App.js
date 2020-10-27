@@ -11,30 +11,29 @@ import {StudentsState} from './context/students/StudentsState'
 
 
 function App() {
-// const {ready, authenticated, login, checkAuth} = useAuth()
-const routes = useRoutes();
+    // const {ready, authenticated, login, checkAuth} = useAuth()
+    const routes = useRoutes();
 
-    // useEffect(()=> {
-    //     checkAuth()
-    // },[])
+        // useEffect(()=> {
+        //     checkAuth()
+        // },[])
 
-    // if (!ready) {
-    //     return <Loader />
-    // }
+        // if (!ready) {
+        //     return <Loader />
+        // }
 
-  return (
-      // <AuthContext.Provider value={{login}}>
-          <StudentsState>
-              {/*{authenticated ?*/}
-                  <Router>
-                      <NavBar/>
-                      {routes}
-                  </Router>
-                  {/*: <Auth />*/}
-              }
-          </StudentsState>
-      // </AuthContext.Provider>
-  )
+      return (
+          // <AuthContext.Provider value={{login}}>
+              <StudentsState>
+                  {/*{authenticated ?*/}
+                      <Router>
+                          <NavBar/>
+                          {routes}
+                      </Router>
+                      {/*: <Auth />*/}
+              </StudentsState>
+          // </AuthContext.Provider>
+      )
 }
 
 export default App

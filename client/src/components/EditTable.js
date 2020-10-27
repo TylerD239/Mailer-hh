@@ -50,7 +50,12 @@ export const EditTable = () => {
                 </tbody>
             </table>
             {state.group &&
-            <button type="button" onClick={addStudent} className="btn btn-outline-primary btn-block">Добавить</button>}
+                <button
+                    type="button"
+                    onClick={addStudent}
+                    className="btn btn-outline-primary btn-block">
+                    Добавить
+                </button>}
         </div>
     )
 }
