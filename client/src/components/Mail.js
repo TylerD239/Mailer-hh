@@ -4,9 +4,9 @@ import {StudentsContext} from "../context/students/StudentsContext";
 export const Mail = () => {
 
     const [accept, setAccept] = useState(false)
-    const [text, setText] = useState('\n\n\n\nС уважением.\nИрина Владимировна')
+    // const [text, setText] = useState('\n\n\n\nС уважением.\nИван Иванов')
+    const [text, setText] = useState('')
     const [subject, setSubject] = useState('')
-
     const {state, clearMarks} = useContext(StudentsContext)
 
     const postMarks = async () => {
@@ -28,7 +28,7 @@ export const Mail = () => {
         if (response.ok) clearMarks()
     }
 
-console.log(Object.keys(state.marks).length)
+// console.log(Object.keys(state.marks).length)
 
     return (
         <div>
@@ -47,7 +47,7 @@ console.log(Object.keys(state.marks).length)
                     }} className="btn btn-outline-success mr-3 mt-3">Подтвердить
                     </button>
                     <button onClick={() => {
-                        setAccept(false)
+                        setAccept(false)    
                     }} className="btn btn-outline-danger mt-3">отменить
                     </button>
                 </div>
@@ -72,6 +72,7 @@ console.log(Object.keys(state.marks).length)
                         <label htmlFor="content">Текст письма</label>
                         <textarea
                             value={text}
+                            placeholder="Введите текст письма. Вместо оценки напишите кодовое слово 'mark'. В отправленных письмах слово 'mark' будет автоматически заменено на соответствующую оценку из таблицы."
                             className="form-control"
                             id="content"
                             rows="6"

@@ -6,7 +6,7 @@ export const Auth = () => {
     const {login} = useContext(AuthContext)
 
 
-    const changeHandler = (e) => {
+    const changeHandler = e => {
         setText(e.target.value)
     }
     return (
@@ -16,7 +16,8 @@ export const Auth = () => {
                 <div className="form-inline">
                     <div className="form-group">
                         <input
-                            onKeyPress={(e)=>{if(e.key === 'Enter') login(text)}}
+                            // onKeyPress={(e)=>{if(e.key === 'Enter') login(text)}}
+                            onKeyPress={e => e.key === 'Enter' && login(text)}
                             type="password"
                             id="inputPassword"
                             className="form-control mx-sm-3"
@@ -24,7 +25,7 @@ export const Auth = () => {
                             aria-describedby="passwordHelpInline"
                             placeholder="Введите пароль"
                             onChange={changeHandler} />
-                            <button  onClick={()=>{login(text)}} className="btn btn-outline-success">Войти</button>
+                            <button  onClick={() => login(text)} className="btn btn-outline-success">Войти</button>
                     </div>
                 </div>
             </div>

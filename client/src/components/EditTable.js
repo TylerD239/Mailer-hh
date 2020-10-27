@@ -25,25 +25,25 @@ export const EditTable = () => {
                                 className="form-control"
                                 type="text"
                                 value={student[0] || ''}
-                                onChange={(e) => {
-                                    changeName(e, i)
-                                }}
+                                onChange={evt => changeName(evt, i)}
                             />
                         </td>
                         <td>
                             <input
                                 className={student[2] ? "form-control red" : "form-control"}
                                 type="text"
-                                onChange={(e) => {
-                                    changeMail(e, i)
-                                }}
+                                onChange={evt => changeMail(evt, i)}
                                 value={student[1] || ''}
                             />
                         </td>
                         <td>
-                            <button type="button" onClick={() => {
-                                deleteStudent(i)
-                            }} className="btn btn-outline-link red">&times;</button>
+                            <button
+                                type="button"
+                                onClick={() => deleteStudent(i)}
+                                className="btn btn-outline-link red"
+                            >
+                                &times;
+                            </button>
                         </td>
                     </tr>
                 ))}

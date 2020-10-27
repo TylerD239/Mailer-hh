@@ -11,18 +11,18 @@ app.use(express.json({extended:true}))
 
 const PORT = config.get('port') || 5000
 
-const ips = []
+// const ips = []
 
-app.get('/api/auth', (req,res) => {
-
-    res.send({auth:ips.includes(req.connection.remoteAddress)})
-})
-app.post('/api/auth', (req,res) => {
-
-    const auth = req.body.password === '7303188'
-    res.send({auth})
-    if (auth) ips.push(req.connection.remoteAddress)
-})
+// app.get('/api/auth', (req,res) => {
+//
+//     res.send({auth:ips.includes(req.connection.remoteAddress)})
+// })
+// app.post('/api/auth', (req,res) => {
+//
+//     const auth = req.body.password === 'xxxxxx'
+//     res.send({auth})
+//     if (auth) ips.push(req.connection.remoteAddress)
+// })
 
 app.post('/api/send', (req,res) => {
 
@@ -55,9 +55,9 @@ app.post('/api/edits/:group', (req,res) => {
 
 app.get('/api/getList/:group', (req, res)=> {
 
-    const list =xlsx.parse(__dirname + '/classes/' + req.params.group + '.xlsx')[0].data
-        .filter((el)=>el.length)
-    list.forEach((el) => {
+    const list = xlsx.parse(__dirname + '/classes/' + req.params.group + '.xlsx')[0].data
+        .filter( el =>el.length)
+    list.forEach(el => {
         if (!el[1]) {
             el[1] = false
         } else {
@@ -79,7 +79,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 
-const reWrite = (name,data) => {
+const reWrite = (name, data) => {
     const book = XLSX.utils.book_new()
     const sheet = XLSX.utils.aoa_to_sheet(data)
     XLSX.utils.book_append_sheet(book, sheet, 'sheet1')
@@ -87,4 +87,4 @@ const reWrite = (name,data) => {
 }
 
 
-app.listen(PORT, ()=>{console.log(`Started on ${PORT}`)})
+app.listen(PORT, () => console.log(`Started on ${PORT}`))
